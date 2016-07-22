@@ -29,22 +29,24 @@ SHELL_CMD = 'adb shell '
 CMD_INPUT = 'input '
 CMD_SWIPE = 'swipe '
 CMD_TAP = 'tap '
-CMD_BACK_BUTTON = '4'
+CMD_KEY = 'keyevent '
 
-ABS_MOV_START_X = '300'
-ABS_MOV_START_Y = '300'
-ABS_MOV_END_RX = '400'
-ABS_MOV_END_LX = '200'
-ABS_MOV_END_Y = '400'
+ABS_MOV_START_X = 300
+ABS_MOV_START_Y = 300
+ABS_MOV_END_RX = 400
+ABS_MOV_END_LX = 200
+ABS_MOV_END_Y = 400
 
-ABS_MOV_SPD_SLOW = '1200'
-ABS_MOV_SPD_NML = '800'
-ABS_MOV_SPD_FAST = '400'
-ABS_MOV_SPD_SUPER = '100'
+ABS_MOV_SPD_SLOW = 1200
+ABS_MOV_SPD_NML = 800
+ABS_MOV_SPD_FAST = 400
+ABS_MOV_SPD_SUPER = 100
 
-ABS_MOV_LEFT_ROTATE_X = '0'
-ABS_MOV_RIGHT_ROTATE_X = '600'
-ABS_MOV_SPD_ROTATE = '1000'
+ABS_MOV_LEFT_ROTATE_X = 0
+ABS_MOV_RIGHT_ROTATE_X = 600
+ABS_MOV_SPD_ROTATE = 1000
+CMD_BACK_KEY = 4
+
 
 # Main Menu
 def showMenu():
@@ -85,12 +87,13 @@ def actionPosition(x, y):
 	return cmd
 
 def actionSwipeXY(x1, x2, y1, y2, speed):
-	action = SHELL_CMD + CMD_INPUT + CMD_SWIPE + x1 + ' ' + x2 + ' ' + y1 + ' ' + y2 + ' ' + speed
+	action = SHELL_CMD + CMD_INPUT + CMD_SWIPE + str(x1) + ' ' + str(x2) + ' ' + str(y1) + ' ' + str(y2) + ' ' + str(speed)
 	doAction(action)
 	return
 
 def actionPress(key):
-	aciton = 
+	aciton = SHELL_CMD + CMD_INPUT + CMD_KEY + str(key)
+	print action
 	doAction(action)
 	return
 
@@ -127,7 +130,7 @@ def actionMovRightRotate():
 	return
 
 def actionBack():
-
+	actionPress(CMD_BACK_KEY)
 	return
 
 def action9C():
@@ -153,6 +156,8 @@ while True:
 			actionMovRightFast()
 		if action == "rr" :
 			actionMovRightRotate()
+		if action == "b":
+			os.popen('adb shell input keyevent 4')
 		if action == "q" :
 			print '.....Quit'
 			break
