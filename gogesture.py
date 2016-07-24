@@ -47,6 +47,11 @@ ABS_MOV_RIGHT_ROTATE_X = 600
 ABS_MOV_SPD_ROTATE = 1000
 CMD_BACK_KEY = 4
 
+ABS_MOV_CENTER_BOTTM_X = 300
+ABS_MOV_CENTER_BOTTM_Y = 300
+ABS_THROW_TARGET_LV1 = 800
+ABS_THROW_TARGET_LV2 = 400
+ABS_THROW_TARGET_LV3 = 300
 
 # Main Menu
 def showMenu():
@@ -59,6 +64,7 @@ def showMenu():
 	print '----  [c7] [c8] [c9]'
 	print '- [l1]: Left rotate'
 	print '- [r1]: Right rotate'
+	print '- [t]: Throw the ball'
 	print '- [q]: Quit'
 	print '--- Waiting for your action: ---'
 
@@ -129,11 +135,23 @@ def actionMovRightRotate():
 		actionSwipeXY(ABS_MOV_START_X, ABS_MOV_START_Y, ABS_MOV_RIGHT_ROTATE_X, ABS_MOV_RIGHT_ROTATE_X, ABS_MOV_SPD_ROTATE)
 	return
 
+def throwBall(level):
+	if level == 1:
+		actionSwipeXY(ABS_MOV_CENTER_BOTTM_X, ABS_MOV_CENTER_BOTTM_Y, ABS_MOV_CENTER_BOTTM_X, ABS_THROW_TARGET_LV1, ABS_MOV_SPD_NML)
+	return
+	if level == 2:
+		actionSwipeXY(ABS_MOV_CENTER_BOTTM_X, ABS_MOV_CENTER_BOTTM_Y, ABS_MOV_CENTER_BOTTM_X, ABS_THROW_TARGET_LV2, ABS_MOV_SPD_NML)
+	return
+	if level == 3:
+		actionSwipeXY(ABS_MOV_CENTER_BOTTM_X, ABS_MOV_CENTER_BOTTM_Y, ABS_MOV_CENTER_BOTTM_X, ABS_THROW_TARGET_LV3, ABS_MOV_SPD_NML)
+	return
+	
 def actionBack():
 	actionPress(CMD_BACK_KEY)
 	return
 
 def action9C():
+
 	return
 
 
@@ -158,6 +176,12 @@ while True:
 			actionMovRightRotate()
 		if action == "b":
 			os.popen('adb shell input keyevent 4')
+		if action == "t1":
+			throwBall(1)
+		if action == "t1":
+			throwBall(2)
+		if action == "t1":
+			throwBall(3)	
 		if action == "q" :
 			print '.....Quit'
 			break
