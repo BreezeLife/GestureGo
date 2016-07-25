@@ -145,6 +145,27 @@ def throwBall(level):
 	if level == 3:
 		actionSwipeXY(ABS_MOV_CENTER_BOTTM_X, ABS_MOV_CENTER_BOTTM_Y, ABS_MOV_CENTER_BOTTM_X, ABS_THROW_TARGET_LV3, ABS_MOV_SPD_NML)
 	return
+
+def clickCenter9(pos):
+	if pos == 1:
+		actionPress()
+	if pos == 2:
+		actionPress()
+	if pos == 3:
+		actionPress()
+	if pos == 4
+		actinoPress()
+	if pos == 5:
+		actionPress()
+	if pos == 6:
+		actionPress()
+	if pos == 7:
+		actionPress()
+	if pos == 8:
+		actinoPress()
+	if pos == 9:
+		actionPress()
+	return
 	
 def actionBack():
 	actionPress(CMD_BACK_KEY)
@@ -181,7 +202,9 @@ while True:
 		if action == "t1":
 			throwBall(2)
 		if action == "t1":
-			throwBall(3)	
+			throwBall(3)
+		if action == "c":
+			clickCenter9()	
 		if action == "q" :
 			print '.....Quit'
 			break
