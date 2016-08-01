@@ -72,6 +72,10 @@ def doAction(action):
 	os.popen(action)
 	return
 
+def actionBack():
+	actionPress(CMD_BACK_KEY)
+	return
+
 def actionCMD(param1, param2, param3):
 	actioncmd = SENDEVENT_CMD + EVENT_LOCATION + EVENT_ID + ' ' + param1 + ' ' + param2 + ' ' + param3
 	return actioncmd
@@ -166,15 +170,11 @@ def clickCenter9(pos):
 	if pos == 9:
 		actionPress()
 	return
-	
-def actionBack():
-	actionPress(CMD_BACK_KEY)
-	return
+
 
 def action9C():
 
 	return
-
 
 showMenu()
 
